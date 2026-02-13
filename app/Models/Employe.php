@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employe extends Model
 {
+    use hasFactory;
     protected $fillable = ['nom','prenom','email'];
     public function voitures(){
         return $this->hasMany(Voiture::class,'id_employe');
