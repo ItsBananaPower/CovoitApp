@@ -16,7 +16,7 @@ class Trajet extends Model
         return $this->belongsTo(Campus::class, 'id_campus_depart');
     }
 
-    public function voitures(){
+    public function voiture(){
         return $this->belongsTo(Voiture::class, 'id_trajet');
     }
 

@@ -9,7 +9,7 @@ class Campus extends Model
     protected $fillable = ['description','adresse','type'];
 
     public function employes(){
-        return $this->belongsToMany(Employe::class, 'frequenter', 'id_campus', 'id_employe')->withPivot('date_inscription');
+        return $this->belongsToMany(Employe::class, 'frequenter', 'id_campus', 'id_employe');
     }
 
     public function trajetsDepart(){
