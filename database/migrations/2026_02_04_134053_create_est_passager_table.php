@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignId('id_employe')->constrained('employes');
             $table->foreignId('id_trajet')->constrained('trajets');
             $table->string('date_inscription');
-            $table->primary('id_employe','id_trajet','date_inscription');
+            $table->primary(['id_employe','id_trajet','date_inscription']);
             $table->timestamps();
         });
     }

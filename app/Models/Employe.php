@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employe extends Model
 {
-    use hasFactory;
+    use HasFactory;
     protected $fillable = ['nom','prenom','email'];
     public function voitures(){
         return $this->hasMany(Voiture::class,'id_employe');

@@ -9,3 +9,96 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+body { 
+    display: flex; 
+    justify-content: center; 
+    padding: 20px; 
+    font-family: sans-serif; 
+}
+
+.container { 
+    width: 550px; 
+    border: 1px solid black; 
+}
+
+.header, .footer { 
+    padding: 10px; 
+    text-align: center; 
+    border: 1px solid black; 
+}
+
+.content { 
+    padding: 15px; 
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 10px; 
+}
+
+th, td { 
+    border: 1px solid black; 
+    padding: 8px; 
+    text-align: left; 
+}
+
+.info-box { 
+    border: 1px dashed black; 
+    padding: 10px; 
+    margin: 10px 0; 
+}
+
+.flex-row { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 15px; 
+}
+
+.flex-item { 
+    border: 1px solid black; 
+    padding: 10px; 
+    flex: 1; 
+    text-align: center; 
+}
+
+.btn { 
+    border: 1px solid black;
+    padding: 5px 15px;
+    text-decoration: none;
+    font-size: 0.9em;
+    display: inline-block;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.key_value_box {
+    border: 1px solid black;
+    padding: 10px;
+    display: inline-block;
+    min-width: 120px;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.key_title {
+    text-decoration: underline;
+    font-size: 1.1em;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.value_content {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.liste_info {
+    font-size: 0.85em;
+    margin-bottom: 15px;
+    display: block;
+    text-align: left;
+}

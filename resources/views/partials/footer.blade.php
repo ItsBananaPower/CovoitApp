@@ -1,0 +1,1 @@
+<div class="footer">Site développé par les BUT2</div>

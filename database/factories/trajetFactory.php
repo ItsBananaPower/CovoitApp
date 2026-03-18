@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Campus;
+use App\Models\Voiture;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

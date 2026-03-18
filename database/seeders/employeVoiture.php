@@ -9,6 +9,9 @@ class employeVoiture extends Seeder
 {
     public function run(): void
     {
-        App/Models/Employe::factory(10)->hasVoitures(1)->create();
+        Employe::factory(10)->create()->each(function ($employe) {
+            $nbVoitures = rand(0, 2);
+            Voiture::factory($nbVoitures)->create(['id_employe' => $employe->id]);
+        });
     }
 }
