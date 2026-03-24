@@ -14,7 +14,7 @@ class Employe extends Model
     }
 
     public function campuses(){
-        return $this->belongsToMany(Campus::class, 'frequenter', 'id_campuses', 'id_employe');
+        return $this->belongsToMany(Campus::class, 'frequenter', 'id_employe', 'id_campus');
     }
 
     public function trajets(){

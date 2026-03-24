@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Voiture;
+use App\Models\Employe; 
 
 class VoitureController extends Controller
 {
@@ -12,15 +13,18 @@ class VoitureController extends Controller
      */
     public function index()
     {
-        //
+        $voitures = Voiture::with('employe')->get();
+    
+        return view('voitures.index', compact('voitures'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id_employe)
     {
-        //
+        $employe = Employe::findOrFail($id_employe);
+        return view('voitures.create', compact('employe'));
     }
 
     /**
@@ -28,7 +32,15 @@ class VoitureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nouvelle_voiture = $request->validate([
+            'modele' => 'required|string',
+            'nb_places' => 'required|integer|min:1',
+            'id_employe' => 'required' 
+        ]);
+
+        \App\Models\Voiture::create($nouvelle_voiture);
+
+        return redirect()->route('employes.show', $request->id_employe);
     }
 
     /**

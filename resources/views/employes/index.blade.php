@@ -1,6 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('content')
+    @if(session()->has('error'))
+        <div style="color: red; border: 1px solid red; padding: 10px; margin-bottom: 15px;">
+            {{ session('error') }}
+        </div>
+    @endif
+    
     <div style="text-align: center; border: 1px solid black; padding: 5px; margin-bottom: 10px;">
         Liste des employés
     </div>

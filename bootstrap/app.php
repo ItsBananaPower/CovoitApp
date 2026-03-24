@@ -11,7 +11,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'verif.voiture' => \App\Http\Middleware\VerifPossessionVoiture::class,
+            'verif.campus'  => \App\Http\Middleware\VerifAppartenanceCampus::class,
+            'verif.bus'     => \App\Http\Middleware\VerifCapaciteVoiture::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

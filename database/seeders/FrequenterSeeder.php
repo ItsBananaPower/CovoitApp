@@ -2,38 +2,35 @@
 
 namespace Database\Seeders;
 
-use App\Models\Employe;
-use App\Models\Voiture;
-use App\Models\Campus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Employe;
+use App\Models\Campus;
 
-
-class DatabaseSeeder extends Seeder
+class FrequenterSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
+        $campuses = Campus::all();
 
-         if (Campus::count() == 0) {
+        if ($campuses->isEmpty()) {
             Campus::create(['description' => 'Campus de Bayonne', 'adresse' => 'Allée du Parc Montaury', 'type' => 'IUT']);
             Campus::create(['description' => 'Campus d\'Anglet', 'adresse' => 'Rue de la glisse', 'type' => 'Logistique']);
             Campus::create(['description' => 'Campus de Pau', 'adresse' => 'Avenue de l\'université', 'type' => 'Général']);
+            
+            $campuses = Campus::all();
         }
 
-        $campuses = Campus::all();
+        $employes = Employe::all();
 
-        Employe::factory(10)->create()->each(function ($employe) use ($campuses) {
-            $nbVoitures = rand(0, 2);
-            Voiture::factory($nbVoitures)->create(['id_employe' => $employe->id]);
+        foreach ($employes as $employe) {
 
             $randomCampuses = $campuses->random(rand(1, 2))->pluck('id');
-            
-            $employe->campuses()->attach($randomCampuses);
-        });
+
+            $employe->campuses()->syncWithoutDetaching($randomCampuses);
+        }
     }
 }

@@ -17,6 +17,12 @@
         <strong>{{ $resultatVerif }}</strong>
     </form>
     
+    @if(session()->has('erreur_bus'))
+        <div style="color: red; font-weight: bold; border: 1px solid red; padding: 10px; margin-bottom: 10px; text-align: center;">
+            {{ session('erreur_bus') }}
+        </div>
+    @endif
+
     <br>
     @foreach($employe->voitures as $voiture)
         <p>
