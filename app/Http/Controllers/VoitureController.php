@@ -50,7 +50,7 @@ class VoitureController extends Controller
     {
         $voiture = Voiture::with('employe')->findOrFail($id);
 
-        return view('voitures.show', compact('voiture'));
+        return response()->json($voiture);
     }
 
     /**

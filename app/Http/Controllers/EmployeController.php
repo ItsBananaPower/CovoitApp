@@ -13,7 +13,7 @@ class EmployeController extends Controller
     public function index()
     {
         $employes = Employe::all();
-        return view('employes.index', compact('employes'));
+        return response()->json($employes);
     }
 
     /**
@@ -39,17 +39,10 @@ class EmployeController extends Controller
     {
         $employe = Employe::with('voitures')->findOrFail($id);
 
-        $resultatVerif = null;
-
-        if ($request->has('modele_cherche') && $request->modele_cherche != "") {
-            $recherche = $request->input('modele_cherche');
-            
-            $existe = $employe->voitures->where('modele', $recherche)->first();
-            
-            $resultatVerif = $existe ? 'YES' : 'NO';
-        }
-
-        return view('employes.show', compact('employe', 'resultatVerif'));
+        return response()->json([
+            'employe' => $employe,
+            'resultat_verification' => null
+        ]);
     }
 
     /**
